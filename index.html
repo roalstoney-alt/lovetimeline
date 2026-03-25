@@ -14,8 +14,27 @@
       text-align: center;
     }
 
+    /* HERO VIDEO */
     .hero {
+      position: relative;
       height: 100vh;
+      overflow: hidden;
+    }
+
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .overlay {
+      position: relative;
+      z-index: 2;
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -41,11 +60,6 @@
       font-size: 16px;
     }
 
-    video {
-      width: 100%;
-      display: block;
-    }
-
     .section {
       padding: 30px 20px;
     }
@@ -67,28 +81,29 @@
 
 <body>
 
-  <!-- HERO -->
+  <!-- HERO（视频已上移🔥） -->
   <div class="hero">
-    <h1>This is your future</h1>
-    <p>See your love story in seconds</p>
 
-    <a href="#video" class="btn">Create My Story (Free)</a>
-
-    <p style="margin-top:20px;font-size:14px;">
-      Takes less than 10 seconds
-    </p>
-  </div>
-
-  <!-- VIDEO -->
-  <div id="video">
-    <video id="previewVideo" autoplay muted playsinline>
-      <!-- 替换成你的AI视频 -->
+    <!-- ✅ 已加 loop -->
+    <video id="previewVideo" class="bg-video" autoplay muted loop playsinline>
       <source src="https://pub-88394393d2aa4860b9b354529cb43c47.r2.dev/output.mp4" type="video/mp4">
     </video>
+
+    <div class="overlay">
+      <h1>This is your future</h1>
+      <p>See your love story in seconds</p>
+
+      <a href="#next" class="btn">Create My Story (Free)</a>
+
+      <p style="margin-top:20px;font-size:14px;">
+        Takes less than 10 seconds
+      </p>
+    </div>
+
   </div>
 
   <!-- TEXT -->
-  <div class="section">
+  <div id="next" class="section">
     <h3>Upload a photo → Get your life story</h3>
     <p>People say this made them cry</p>
   </div>
@@ -103,7 +118,6 @@
     <h2>Your story is ready…</h2>
     <p>You’ve only seen the beginning</p>
 
-    <!-- 替换为你的Stripe支付链接 -->
     <a href="https://buy.stripe.com/your-link" class="btn">
       Unlock My Story
     </a>
