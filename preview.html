@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview Your Story</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000}
+video{position:fixed;top:0;left:0;width:100%;height:100vh;object-fit:cover}
+.popup{display:none;position:fixed;bottom:0;left:0;width:100%;background:#fff;padding:30px;border-radius:20px 20px 0 0;text-align:center;z-index:999}
+.btn{display:block;padding:16px;background:#e13c6a;color:#fff;border-radius:12px;text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+<video autoplay muted playsinline></video>
+<div class="popup" id="popup">
+<h2>Your Story Is Ready</h2>
+<p>Unlock The Full Video Now</p>
+<a href="https://lovetimeline.myshopify.com/products/full-story" class="btn">Get Full Story — $9.9</a>
+</div>
+<script>
+setTimeout(()=>{
+document.getElementById('popup').style.display='block'
+document.querySelector('video').style.filter='blur(10px)'
+},6000)
+</script>
+</body>
+</html>
