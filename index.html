@@ -1,78 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Love Timeline - Create Your Story</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{color:#fff;background:#0b0b0e}
-.hero{width:100%;height:100vh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center}
-.hero video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.hero .content{position:relative;z-index:1;padding:0 20px}
-.hero h1{font-size:clamp(28px,6vw,52px);margin-bottom:16px;text-shadow:0 0 15px #000}
-.hero p{font-size:clamp(16px,3vw,22px);margin-bottom:40px;text-shadow:0 0 10px #000}
-.btn{display:inline-block;padding:18px 44px;background:#e24070;color:#fff;border-radius:14px;text-decoration:none;font-weight:bold;font-size:18px}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoveTimeline</title>
 
-.demo{padding:60px 20px;text-align:center}
-.demo video{max-width:400px;width:100%;border-radius:24px}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      text-align: center;
+    }
 
-.tagline{padding:30px 20px;text-align:center;font-size:20px;color:#ddd}
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-.products{padding:60px 20px;max-width:500px;margin:0 auto}
-.card{background:#141419;border-radius:18px;padding:28px;margin-bottom:18px}
-.card h3{font-size:22px;margin-bottom:8px}
-.card .price{font-size:20px;color:#e24070;font-weight:bold;margin-bottom:20px}
-.card a{display:block;background:#e24070;color:#fff;text-align:center;padding:16px;border-radius:14px;text-decoration:none;font-weight:bold}
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
 
-.footer-cta{padding:80px 20px;text-align:center}
-</style>
+    p {
+      color: #aaa;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 14px 28px;
+      background: #ff6b6b;
+      border-radius: 30px;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+    }
+
+    .section {
+      padding: 30px 20px;
+    }
+
+    .popup {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.95);
+      padding: 20px;
+      display: none;
+    }
+
+    .popup h2 {
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- 主视频区 -->
-<section class="hero">
-<video autoplay muted loop playsinline></video>
-<div class="content">
-<h1>This Is Your Future</h1>
-<p>See Your Love Story In Seconds</p>
-<a href="upload.html" class="btn">Create My Story</a>
-</div>
-</section>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>This is your future</h1>
+    <p>See your love story in seconds</p>
 
-<!-- 演示视频 -->
-<section class="demo">
-<video autoplay muted loop playsinline></video>
-</section>
+    <a href="#video" class="btn">Create My Story (Free)</a>
 
-<!-- 流程文案 -->
-<section class="tagline">
-Upload a photo → Generate your story → Unlock full video
-</section>
+    <p style="margin-top:20px;font-size:14px;">
+      Takes less than 10 seconds
+    </p>
+  </div>
 
-<!-- 3个产品卡片（文档要求完整实现） -->
-<section class="products">
-<div class="card">
-<h3>Preview</h3>
-<div class="price">Free</div>
-<a href="upload.html">Start Free</a>
-</div>
-<div class="card">
-<h3>Full Story</h3>
-<div class="price">$9.9</div>
-<a href="https://lovetimeline.myshopify.com/products/full-story">Unlock Now</a>
-</div>
-<div class="card">
-<h3>Premium</h3>
-<div class="price">$19.9</div>
-<a href="https://lovetimeline.myshopify.com/products/premium">Get Premium</a>
-</div>
-</section>
+  <!-- VIDEO -->
+  <div id="video">
+    <video id="previewVideo" autoplay muted playsinline>
+      <!-- 替换成你的AI视频 -->
+      <source src="https://pub-88394393d2aa4860b9b354529cb43c47.r2.dev/output.mp4" type="video/mp4">
+    </video>
+  </div>
 
-<!-- 底部CTA -->
-<section class="footer-cta">
-<a href="upload.html" class="btn">Start My Love Story</a>
-</section>
+  <!-- TEXT -->
+  <div class="section">
+    <h3>Upload a photo → Get your life story</h3>
+    <p>People say this made them cry</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="section">
+    <a href="#" class="btn">Create My Story</a>
+  </div>
+
+  <!-- POPUP -->
+  <div class="popup" id="popup">
+    <h2>Your story is ready…</h2>
+    <p>You’ve only seen the beginning</p>
+
+    <!-- 替换为你的Stripe支付链接 -->
+    <a href="https://buy.stripe.com/your-link" class="btn">
+      Unlock My Story
+    </a>
+
+    <p style="font-size:12px;color:#666;margin-top:10px;">
+      Only $9.9
+    </p>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const video = document.getElementById("previewVideo");
+      const popup = document.getElementById("popup");
+
+      video.style.filter = "blur(10px)";
+      video.pause();
+
+      popup.style.display = "block";
+    }, 6000);
+  </script>
 
 </body>
 </html>
