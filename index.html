@@ -14,13 +14,14 @@
       text-align: center;
     }
 
-    /* HERO VIDEO */
+    /* HERO */
     .hero {
       position: relative;
       height: 100vh;
       overflow: hidden;
     }
 
+    /* 视频背景 */
     .bg-video {
       position: absolute;
       top: 0;
@@ -31,6 +32,7 @@
       z-index: 1;
     }
 
+    /* 内容层 */
     .overlay {
       position: relative;
       z-index: 2;
@@ -63,29 +65,24 @@
     .section {
       padding: 30px 20px;
     }
-
-    .popup {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.95);
-      padding: 20px;
-      display: none;
-    }
-
-    .popup h2 {
-      margin-bottom: 10px;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO（视频已上移🔥） -->
+  <!-- HERO（视频第一屏） -->
   <div class="hero">
 
-    <!-- ✅ 已加 loop -->
-    <video id="previewVideo" class="bg-video" autoplay muted loop playsinline>
+    <video 
+      id="previewVideo" 
+      class="bg-video"
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      preload="auto"
+      poster="cover.jpg"
+    >
       <source src="https://pub-88394393d2aa4860b9b354529cb43c47.r2.dev/output.mp4" type="video/mp4">
     </video>
 
@@ -97,6 +94,11 @@
 
       <p style="margin-top:20px;font-size:14px;">
         Takes less than 10 seconds
+      </p>
+
+      <!-- 🔥 增强代入感 -->
+      <p style="margin-top:10px;color:#fff;">
+        What if this was your life?
       </p>
     </div>
 
@@ -113,30 +115,24 @@
     <a href="#" class="btn">Create My Story</a>
   </div>
 
-  <!-- POPUP -->
-  <div class="popup" id="popup">
-    <h2>Your story is ready…</h2>
-    <p>You’ve only seen the beginning</p>
-
-    <a href="https://buy.stripe.com/your-link" class="btn">
-      Unlock My Story
-    </a>
-
-    <p style="font-size:12px;color:#666;margin-top:10px;">
-      Only $9.9
-    </p>
-  </div>
-
+  <!-- JS（移动端自动播放修复） -->
   <script>
-    setTimeout(() => {
+    document.addEventListener("DOMContentLoaded", () => {
       const video = document.getElementById("previewVideo");
-      const popup = document.getElementById("popup");
 
-      video.style.filter = "blur(10px)";
-      video.pause();
+      const tryPlay = () => {
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            document.body.addEventListener("click", () => {
+              video.play();
+            }, { once: true });
+          });
+        }
+      };
 
-      popup.style.display = "block";
-    }, 6000);
+      tryPlay();
+    });
   </script>
 
 </body>
