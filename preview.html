@@ -6,23 +6,25 @@
 <title>Preview Your Story</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000}
+body{background:#000;color:#fff;font-family:Arial,sans-serif}
 video{position:fixed;top:0;left:0;width:100%;height:100vh;object-fit:cover}
-.popup{display:none;position:fixed;bottom:0;left:0;width:100%;background:#fff;padding:30px;border-radius:20px 20px 0 0;text-align:center;z-index:999}
-.btn{display:block;padding:16px;background:#e13c6a;color:#fff;border-radius:12px;text-decoration:none;font-weight:600}
+.popup{display:none;position:fixed;bottom:0;left:0;width:100%;background:#141419;padding:34px;border-radius:24px 24px 0 0;text-align:center;z-index:999}
+.popup h2{margin-bottom:12px}
+.popup p{color:#aaa;margin-bottom:28px}
+.btn{display:block;padding:18px;background:#e24070;color:#fff;border-radius:14px;text-decoration:none;font-weight:bold;font-size:18px}
 </style>
 </head>
 <body>
 <video autoplay muted playsinline></video>
 <div class="popup" id="popup">
 <h2>Your Story Is Ready</h2>
-<p>Unlock The Full Video Now</p>
+<p>You’ve watched the preview. Unlock the full video now.</p>
 <a href="https://lovetimeline.myshopify.com/products/full-story" class="btn">Get Full Story — $9.9</a>
 </div>
 <script>
 setTimeout(()=>{
 document.getElementById('popup').style.display='block'
-document.querySelector('video').style.filter='blur(10px)'
+document.querySelector('video').style.filter='blur(12px) brightness(0.6)'
 },6000)
 </script>
 </body>
